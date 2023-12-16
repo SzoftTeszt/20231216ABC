@@ -16,6 +16,11 @@ import { FormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './part/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './part/verify-email/verify-email.component';
 import { UserListComponent } from './part/user-list/user-list.component';
+import { ProfilComponent } from './part/profil/profil.component';
+import { CategoriesComponent } from './part/categories/categories.component';
+import { ProductsComponent } from './part/products/products.component';
+import { CartComponent } from './part/cart/cart.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { UserListComponent } from './part/user-list/user-list.component';
     NavComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    UserListComponent
+    UserListComponent,
+    ProfilComponent,
+    CategoriesComponent,
+    ProductsComponent,
+    CartComponent,
+
   ],
   imports: [
     BrowserModule,

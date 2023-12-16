@@ -1,0 +1,4 @@
+<ul class="list-group mx-3">
+    <li (click)="KategoriatValt(i)" *ngFor="let kategoria of kategoriak; let i=index" class="list-group-item" [ngClass]="i==aktivKategoria?'active':''">{{kategoria}}</li>
+   
+  </ul>

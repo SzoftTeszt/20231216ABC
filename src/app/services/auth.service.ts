@@ -11,11 +11,12 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class AuthService {
   url="https://us-central1-zsemlyabc.cloudfunctions.net/api/"
   user:any={}
-  defaultClaims = {superAdmin:false, admin:false, informatikus:false}
+  defaultClaims = {superAdmin:false, admin:false, informatikus:false, address:""}
 
   superAdminSubject= new Subject<boolean>
   superAdminBehavior= new BehaviorSubject<boolean>(false)
 
+  userBehavior= new BehaviorSubject<any>(null)
 
   constructor(private afAuth:AngularFireAuth,
     private router:Router, private http: HttpClient) {
@@ -24,12 +25,12 @@ export class AuthService {
           if (user){
             this.user=user
            
-            console.log("Belépés", user)
+            // console.log("Belépés", user)
             // if (!this.user.displayName) this.user.displayName=this.user.email
             user.getIdToken().then(
               (token)=>
                 {
-                  console.log("Belépés(token): ",token)
+                  // console.log("Belépés(token): ",token)
                   this.user.token=token
                   this.getClaims(this.user.uid).subscribe(
                     (claims)=> {
@@ -37,12 +38,14 @@ export class AuthService {
                         this.user.claims=claims
                         this.superAdminSubject.next(this.user.claims.superAdmin)
                         this.superAdminBehavior.next(this.user.claims.superAdmin)
+                        this.userBehavior.next(this.user)
                       }
                       else{
                         this.setCustomClaims(this.user.uid, this.defaultClaims)
                         this.user.claims=this.defaultClaims
                         this.superAdminSubject.next(false)
                         this.superAdminBehavior.next(false)
+                        this.userBehavior.next(this.user)
                       }
                     }                   
                     
@@ -52,13 +55,19 @@ export class AuthService {
           }
           else {
             this.user=null
+            this.userBehavior.next(this.user)
             this.superAdminSubject.next(false)
             this.superAdminBehavior.next(false)
           }
         }
       )
      }
-  
+     
+
+     getUser(){
+      return this.userBehavior
+     }
+
      getIsSuperAdmin(){
       if (this.user && this.user.claims) return this.superAdminBehavior
       // return false
@@ -87,7 +96,7 @@ export class AuthService {
       (u)=>{
         console.log("Google regisztráció",u)
              
-        this.router.navigate(['/users'])
+        this.router.navigate(['/home'])
       }
     )
   }
@@ -110,9 +119,13 @@ export class AuthService {
     return this.afAuth.authState
   }
 
-  isLogin(){
+  isNotLogin(){
     if (this.user) return false
     return true
+  }
+
+  isLogin(){   
+    return !this.isNotLogin()
   }
 
   sendVerificationEmail(){
@@ -138,6 +151,25 @@ export class AuthService {
               subscribe({
                 next:()=>console.log("A claims beállítása sikeres!"),
                 error:(e)=>console.log("Hiba a claimsnél: ",e)
+              })
+            }
+  setDisplayName( uid:any,displayName:any){
+      const body= {uid, displayName}
+      let headers = new HttpHeaders().set('Authorization', this.user.token)
+      this.http.post(this.url+'setDisplayName',body, {headers}).
+              subscribe({
+                next:()=>console.log("A displayName beállítása sikeres!"),
+                error:(e)=>console.log("Hiba a displayName: ",e)
+              })
+            }
+
+  setPhotoURL( uid:any, photoURL:any){
+      const body= {uid, photoURL}
+      let headers = new HttpHeaders().set('Authorization', this.user.token)
+      this.http.post(this.url+'setPhotoURL',body, {headers}).
+              subscribe({
+                next:()=>console.log("FényképOK"),
+                error:(e)=>console.log("Hiba fénykép: ",e)
               })
             }
 }

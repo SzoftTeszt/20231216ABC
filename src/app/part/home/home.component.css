@@ -1,0 +1,14 @@
+.box{
+    display: flex;
+
+}
+
+app-categories{
+    flex-basis: 20%;
+}
+app-cart{
+    flex-basis: 20%;
+}
+app-products{
+    flex-basis: 60%;
+}

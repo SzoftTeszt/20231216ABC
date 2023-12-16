@@ -21,7 +21,7 @@ export class SinginComponent {
 
     signIn(){
       this.auth.signIn(this.email,this.password).then(
-        ()=>this.router.navigate(['/users'])
+        ()=>this.router.navigate(['/home'])
       )
       .catch(
         (e)=>console.log(e)

@@ -35,7 +35,7 @@ export class NavComponent {
 
   signOut(){
     this.auth.signOut().then(
-      ()=>this.router.navigate(['/home'])
+      ()=>this.router.navigate(['/signin'])
     )
   }
 

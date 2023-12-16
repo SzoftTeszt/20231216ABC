@@ -1,12 +1,7 @@
-<button (click)="addMessage()" type="button" class="btn btn-primary">Message</button>
-
-<ng-container *ngIf="messages && !showError; else error">
-    {{messages|json}}
-</ng-container>
-<ng-template #error>
-    <div class="alert alert-danger" role="alert">
-        {{errorMessage}}
-      </div>
-</ng-template>
+<div class="box">
+    <app-categories (kategoriaValtas)="kategoriaValtas($event)"></app-categories>
+    <app-products [aktualisTermekek]="aktualisTermekek"></app-products>
+    <app-cart></app-cart>
+</div>
 
 

@@ -1,0 +1,31 @@
+<!-- <button (click)="addMessage()" type="button" class="btn btn-primary">Message</button>
+
+<ng-container *ngIf="products && !showError; else error">
+    {{products|json}}
+</ng-container>
+<ng-template #error>
+    <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+</ng-template> -->
+
+<p>Árukészlet</p>
+<!-- {{aktualisTermekek|json}} -->
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let termek of aktualisTermekek" class="col"> 
+      <div class="card h-100">
+        <img [src]="termek.kep" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">{{termek.leiras}}</p>
+        </div>
+
+        <input #db type="number" min="1" value="1" class="form-control">
+        <button (click)="addProduct(termek, db.value)" type="button" class="btn btn-primary">Megrendel</button>
+        <div class="card-footer">
+          <small class="text-muted">{{termek.ar}}Ft/{{termek.mennyiseg}}</small>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,39 +1,51 @@
-{{users|json}}
+<ng-container *ngIf="user">
+<!-- {{user|json}} -->
 
 <div class="row">
     <div class="col">Név</div>
     <div class="col">Cím</div>
     <div class="col">E-mail</div>
+    <div class="col">Profil Kép</div>
+
     <div class="col">Jogosultság</div>
     <div class="col">Mentés</div>
 </div>
 
-<ng-container *ngIf="users">
-    <div *ngFor="let user of users" class="row mb-3">
+
+    <div class="row mb-3">
         <div class="col"> 
             <input [(ngModel)]="user.displayName" type="text" class="form-control" >
         </div>
-        <div class="col"> 
+        <div *ngIf="user.claims?.address" class="col"> 
             <input [(ngModel)]="user.claims.address" type="text" class="form-control" >
         </div>
         <div class="col"> {{user.email}}  </div>
         <div class="col"> 
+            <img [src]="user.photoURL" class="img-thumbnail" alt="User Photo">
+            <input [(ngModel)]="user.photoURL" type="text" class="form-control" >
+        </div>
+        <div *ngIf="user.claims" class="col"> 
            
             <div class="form-check form-switch">
-                <input [(ngModel)]="user.claims.superAdmin" class="form-check-input" type="checkbox" checked>
+                <input [(ngModel)]="user.claims.superAdmin" class="form-check-input" type="checkbox" disabled="true">
                 <label class="form-check-label" for="flexSwitchCheckChecked">Super Admin</label>
             </div>    
             <div class="form-check form-switch">
-                <input [(ngModel)]="user.claims.admin" class="form-check-input" type="checkbox"  checked>
+                <input [(ngModel)]="user.claims.admin" class="form-check-input" type="checkbox"  disabled="true">
                 <label class="form-check-label" for="flexSwitchCheckChecked">Admin</label>
             </div>    
             <div class="form-check form-switch">
-                <input [(ngModel)]="user.claims.informatikus" class="form-check-input" type="checkbox" checked>
+                <input [(ngModel)]="user.claims.informatikus" class="form-check-input" type="checkbox" disabled="true">
                 <label class="form-check-label" for="flexSwitchCheckChecked">Informatikus</label>
             </div>    
         </div>
         <div class="col"> 
-            <button (click)="save(user)" type="button" class="btn btn-primary">Save</button>    
+            <button (click)="save()" type="button" class="btn btn-primary">Save</button>    
         </div>
     </div>
+
+
+
+
+
 </ng-container>

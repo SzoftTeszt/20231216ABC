@@ -15,7 +15,8 @@
           <li *ngIf="!user" class="nav-item">
             <a class="nav-link" routerLink="/signin">Log In</a>
           </li>             
-          <li *ngIf="isSuperAdmin" class="nav-item">
+          <!-- <li *ngIf="isSuperAdmin" class="nav-item"> -->
+          <li  class="nav-item">
             <a class="nav-link" routerLink="/users">Users</a>
           </li>  
 
@@ -23,6 +24,10 @@
             <a class="nav-link" routerLink="/users">Felhasználók</a>
           </li>   -->
 
+          <li *ngIf="user" class="nav-item">
+            <a class="nav-link" routerLink="/profil">Profil</a>
+          </li>
+                       
           <li *ngIf="user" class="nav-item">
             <a (click)="signOut()" class="nav-link" >Sign Out</a>
           </li>             
