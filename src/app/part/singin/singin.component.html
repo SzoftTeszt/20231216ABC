@@ -1,0 +1,30 @@
+<div class="form-floating mb-3">
+    <input [(ngModel)]="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+    <label for="floatingInput">Email address</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input [(ngModel)]="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+    <label for="floatingPassword">Password</label>
+  </div>
+  
+<button [disabled]="validUser()" (click)="signIn()" type="button" class="btn btn-primary mb-3">Log In</button>
+<!-- <button (click)="addMessage()" type="button" class="btn btn-primary">Message</button> -->
+
+
+<div class="mb-3">
+    <button (click)="googleAuth()" type="button" class="btn btn-primary">
+        <i class="bi bi-google"></i>
+       Login with Google</button>
+</div>
+
+<div class="mb-3">
+    <button routerLink="/forgotpassword" type="button" class="btn btn-primary">
+       Forgot Password?</button>
+</div>
+
+<div class="mb-3">
+    <div>Don't have an account?
+    <button routerLink="/signup" type="button" class="btn btn-primary">
+       Sign Up</button>
+</div>

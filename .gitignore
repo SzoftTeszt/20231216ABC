@@ -1,0 +1,54 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/public
+/dist
+/tmp
+/out-tsc
+/bazel-out
+./src/app/enviroments.ts
+./functions/chat08new-firebase-adminsdk-bye8v-8b339b1bc0.json
+# Node
+/node_modules
+functions/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+./src/app/enviroments.ts
+./functions/chat08new-firebase-adminsdk-bye8v-8b339b1bc0.json
+functions/chat08new-firebase-adminsdk-bye8v-cd9e59b9d6.json
+./dist/.
+.firebase/hosting.cHVibGlj.cache
+firebase.json
+.firebaserc
+/functions/zsemlyabc-firebase-adminsdk-yl5wf-14a46628c1.json
+src/app/enviroments.ts

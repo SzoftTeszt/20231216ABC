@@ -1,0 +1,24 @@
+<div class="card" >
+  
+    <div class="card-body">
+      <h5 class="card-title">Thank You for Registering</h5>
+      <p class="card-text">We have sent confirmation email</p>
+      <p class="card-text">Please check your email and click the link to verify youer email address</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    
+      <div class="form-floating mb-3">
+        <input disabled="true" [(ngModel)]="email" type="email" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Email address</label>
+      </div>
+      
+    <button (click)="sendVerificationEmail()" type="button" class="btn btn-primary mb-3">Resend Verification Email</button>    
+      
+    <div class="form-floating mb-3">
+        <div>Go back to?</div>
+        <button routerLink="/signin" type="button" class="btn btn-primary mb-3">Log In</button>    
+    </div>
+    
+     
+    
+    </div>
+  </div>

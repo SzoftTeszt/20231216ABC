@@ -1,0 +1,12 @@
+<button (click)="addMessage()" type="button" class="btn btn-primary">Message</button>
+
+<ng-container *ngIf="messages && !showError; else error">
+    {{messages|json}}
+</ng-container>
+<ng-template #error>
+    <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+</ng-template>
+
+
